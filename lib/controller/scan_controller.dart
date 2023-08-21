@@ -74,7 +74,7 @@ class ScanController extends GetxController {
     if (detector != null) {
       log("Result is $detector");
       var detectedObject = detector.first;
-      if (detectedObject['confidence'] * 100 > 70) {
+      if (detectedObject['confidence'] * 100 > 98) {
         label = detectedObject['label'].toString();
       } else {
         label = "Scan a building";

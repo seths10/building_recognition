@@ -37,6 +37,12 @@ class CameraView extends StatelessWidget {
                             height: MediaQuery.of(context).size.height,
                             child: CameraPreview(controller.cameraController),
                           ),
+                          const Center(
+                              child: Text(
+                                  "kindly get closer to a building for accurate results", style: TextStyle(
+                                    color: Colors.yellowAccent,
+                                    fontSize: 12
+                                  ),))
                         ],
                       ),
                     ),
