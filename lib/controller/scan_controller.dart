@@ -25,7 +25,7 @@ class ScanController extends GetxController {
 
   var isCameraInitialized = false.obs; // Observable for camera initialization status
   var cameraCount = 0; // Counter for camera frames processed
-  var label = ""; // Detected object label
+  var label = ""; // Image classification label
 
   // Function to initialize the camera
   initCamera() async {
@@ -43,7 +43,7 @@ class ScanController extends GetxController {
           cameraCount++;
           if (cameraCount % 50 == 0) {
             cameraCount = 0;
-            objectDetector(image); // Run object detection on the frame
+            classification(image); // Run image classification on the frame
           }
           update(); // Update UI
         });
@@ -66,8 +66,8 @@ class ScanController extends GetxController {
     );
   }
 
-  // Function to perform object detection on a camera image
-  objectDetector(CameraImage image) async {
+  // Function to perform image classification on a camera image
+  classification(CameraImage image) async {
     var detector = await Tflite.runModelOnFrame(
       bytesList: image.planes.map((plane) {
         return plane.bytes;
@@ -83,7 +83,7 @@ class ScanController extends GetxController {
     );
 
     if (detector != null) {
-      log("Result is $detector"); // Log the detection result
+      log("Result is $detector"); // Log the classification result
       var detectedObject = detector.first;
       if (detectedObject['confidence'] * 100 > 99) {
         label = detectedObject['label'].toString(); // Set the detected label
