@@ -39,9 +39,9 @@ class CameraView extends StatelessWidget {
                           ),
                           const Center(
                               child: Text(
-                                  "kindly get closer to a building for accurate results", style: TextStyle(
+                                  "kindly get closer to a building for accurate results.", style: TextStyle(
                                     color: Colors.yellowAccent,
-                                    fontSize: 12
+                                    fontSize: 11
                                   ),))
                         ],
                       ),
@@ -56,7 +56,7 @@ class CameraView extends StatelessWidget {
                           controller.label,
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 30,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold),
                         )))
                   ],
